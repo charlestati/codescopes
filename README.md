@@ -33,6 +33,53 @@ may conflict with recommended commit types. Instead, use more specific scopes:
   Tools like [emerge](https://github.com/glato/emerge) could allow you to
   analyze and visualize the complexity of your codebase based on defined scopes
 
+## Recommended commit message syntax
+
+```
+<type>(<scope>): <short summary>
+  │       │             │
+  │       │             └─► Capitalized summary in imperative form.
+  │       │                  50 characters or less. No period at the end.
+  │       │
+  │       └─► Commit scope: One of the scopes defined in the CODESCOPES file.
+  │
+  └─► Commit type: feat|fix|docs|test|i18n|a11y|log|refactor
+
+```
+
+If files from only one scope are modified in a commit, the commit scope should
+be the same as the scope of the modified files.
+
+### Commit types
+
+- **feat**: Add a new feature, with associated tests, translations, logs, and
+  documentation
+- **fix**: Fix a bug, with associated tests, translations, logs, and
+  documentation
+- **docs**: Change documentation only
+- **test**: Add or correct tests only
+- **i18n**: Add or correct translations only
+- **a11y**: Add or correct accessibility features only
+- **log**: Add or correct observability features only
+- **refactor**: Change code without fixing a bug or adding a feature
+
+> Should `perf` be a commit type? In general, I consider performance
+> improvements a refactor. However, if a performance improvement is significant
+> enough to be considered a feature, it should be classified as a `feat`.
+
+### Examples
+
+```
+feat(auth): Add SSO login
+fix(auth): Fix login form validation (closes #123)
+docs(auth): Add documentation for the SSO providers
+test(auth): Add e2e tests for the sign-up flow
+i18n(auth): Fix typo in the French translations
+a11y(auth): Add aria-label to the login form
+log(auth): Send failed login attempts to Sentry
+refactor(auth): Move login form validation to a hook
+```
+
 ## CODESCOPES file
 
 You can use a CODESCOPES file to define code scopes.
@@ -84,53 +131,6 @@ apps/ router
 # subdirectory, as this subdirectory is in the auth scope.
 /pages/ router
 /pages/login auth
-```
-
-## Recommended commit message syntax
-
-```
-<type>(<scope>): <short summary>
-  │       │             │
-  │       │             └─► Capitalized summary in imperative form.
-  │       │                  50 characters or less. No period at the end.
-  │       │
-  │       └─► Commit scope: One of the scopes defined in the CODESCOPES file.
-  │
-  └─► Commit type: feat|fix|docs|test|i18n|a11y|log|refactor
-
-```
-
-If files from only one scope are modified in a commit, the commit scope should
-be the same as the scope of the modified files.
-
-### Commit types
-
-- **feat**: Add a new feature, with associated tests, translations, logs, and
-  documentation
-- **fix**: Fix a bug, with associated tests, translations, logs, and
-  documentation
-- **docs**: Change documentation only
-- **test**: Add or correct tests only
-- **i18n**: Add or correct translations only
-- **a11y**: Add or correct accessibility features only
-- **log**: Add or correct observability features only
-- **refactor**: Change code without fixing a bug or adding a feature
-
-> Should `perf` be a commit type? In general, I consider performance
-> improvements a refactor. However, if a performance improvement is significant
-> enough to be considered a feature, it should be classified as a `feat`.
-
-### Examples
-
-```
-feat(auth): Add SSO login
-fix(auth): Fix login form validation (closes #123)
-docs(auth): Add documentation for the SSO providers
-test(auth): Add e2e tests for the sign-up flow
-i18n(auth): Fix typo in the French translations
-a11y(auth): Add aria-label to the login form
-log(auth): Send failed login attempts to Sentry
-refactor(auth): Move login form validation to a hook
 ```
 
 ## Next steps
