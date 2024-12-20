@@ -14,36 +14,39 @@ may conflict with recommended commit types. Instead, use more specific scopes:
 
 ## Why code scopes?
 
-- **Maintain a mental model of the codebase**: scopes provide a structured way
-  to understand and navigate the code
+- **Maintain a mental model of the codebase**
 
-- **Incentivize grouping of related files**: instead of placing all API calls in
-  a single file such as `lib/api.ts`, you can organize them by feature:
-  `lib/auth/api.ts` or `lib/api/analytics.ts`
+  Scopes provide a structured way to understand and navigate the code.
 
-- **Define commit or pull request scope**: code scopes can be used to specify
-  the scope of a [commit](#Recommended-commit-message-syntax) or pull request
+- **Incentivize grouping of related files**
 
-- **Visualize codebase complexity**: tools like
-  [emerge](https://github.com/glato/emerge) could allow you to analyze and
-  visualize the complexity of your codebase based on defined scopes
+  Instead of placing all API calls in a single file such as `lib/api.ts`, you
+  can organize them by feature: `lib/auth/api.ts` or `lib/api/analytics.ts`
+
+- **Define commit or pull request scope**
+
+  Code scopes can be used to specify the scope of a
+  [commit](#Recommended-commit-message-syntax) or pull request
+
+- **Visualize codebase complexity**
+
+  Tools like [emerge](https://github.com/glato/emerge) could allow you to
+  analyze and visualize the complexity of your codebase based on defined scopes
 
 ## CODESCOPES file
 
 You can use a CODESCOPES file to define code scopes.
 
-### CODESCOPES file location
-
 To use a CODESCOPES file, create a new file called `CODESCOPES` in the root or
 `docs/` directory of your codebase.
 
-### CODESCOPES syntax
+### Syntax
 
 A CODESCOPES file uses a pattern that follows most of the same rules used in
 [gitignore](https://git-scm.com/docs/gitignore#_pattern_format) files. The
 pattern is followed by one scope.
 
-### Example of a CODESCOPES file
+### Example
 
 ```gitignore
 # This is a comment.
@@ -134,7 +137,8 @@ refactor(auth): Move login form validation to a hook
 
 - Enforce the commit message syntax in your repository with
   [commitlint](https://commitlint.js.org/)
-- Automatically scope commits based on the modified files
+- Automatically scope commits based on the modified files using a
+  [commitizen](https://commitizen-tools.github.io/commitizen/) adapter
 
 ## References
 
